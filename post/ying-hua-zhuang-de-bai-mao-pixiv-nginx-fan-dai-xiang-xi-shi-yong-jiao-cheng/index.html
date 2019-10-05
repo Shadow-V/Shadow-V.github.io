@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>樱花庄的白猫Pixiv-Nginx反代详细使用教程 | NightRain&#39;s Notes</title>
 <meta name="description" content="Some Days Are Rain,But My Heart Is Luciferous" />
-<link rel="shortcut icon" href="https://shadow-v.github.io/favicon.ico?v=1570237146105">
+<link rel="shortcut icon" href="https://shadow-v.github.io/favicon.ico?v=1570241154344">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://shadow-v.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://shadow-v.github.io">
-  <img class="avatar" src="https://shadow-v.github.io/images/avatar.png?v=1570237146105" alt="">
+  <img class="avatar" src="https://shadow-v.github.io/images/avatar.png?v=1570241154344" alt="">
   </a>
   <h1 class="site-title">
     NightRain&#39;s Notes
@@ -80,120 +80,90 @@
                 2019-09-14
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
               
             </div>
             
+              <img class="post-feature-image" src="https://shadow-v.github.io/post-images/ying-hua-zhuang-de-bai-mao-pixiv-nginx-fan-dai-xiang-xi-shi-yong-jiao-cheng.jpg" alt="">
+            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p><ul class="markdownIt-TOC">
-<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
-<li><a href="#%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B">手把手详细教程</a></li>
-<li><a href="#%E6%B3%A8%E6%84%8F%E6%9C%AC%E6%96%87%E6%B2%A1%E6%9C%89%E4%BB%BB%E4%BD%95%E5%8E%9F%E7%90%86%E8%A7%A3%E9%87%8A%E5%8F%AA%E6%9C%89%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B">==注意：本文没有任何原理解释！！！只有安装教程==</a>
-<ul>
-<li><a href="#nginx%E5%8F%8D%E4%BB%A3%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B">Nginx反代安装教程</a>
-<ul>
-<li><a href="#1%E8%BF%9B%E5%85%A5%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E7%99%BD%E7%8C%ABqwq%E4%B8%8B%E8%BD%BD%E6%88%91%E7%9F%A5%E9%81%93%E8%BF%99%E6%AD%A5%E7%AE%80%E7%9B%B4%E4%BD%86%E8%BF%98%E6%98%AF%E8%A6%81%E5%86%99%E7%9A%84">1.进入樱花庄的白猫（qwq）下载（<s>我知道这步简直***</s>，但还是要写的）</a></li>
-<li><a href="#2%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%BE%E5%88%B0%E5%90%8D%E4%B8%BAcacer%E7%9A%84%E8%AF%81%E4%B9%A6%E5%8F%B3%E9%94%AE%E7%82%B9%E5%87%BB%E5%AE%89%E8%A3%85">2.打开文件夹，找到名为ca.cer的证书，右键点击安装</a></li>
-<li><a href="#3%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%90%8E%E9%80%89%E6%8B%A9%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%B0%86%E6%89%80%E6%9C%89%E8%AF%81%E4%B9%A6%E9%83%BD%E6%94%BE%E5%85%A5%E4%B8%8B%E5%88%97%E5%82%A8%E5%AD%98%E5%9C%A8%E6%B5%8F%E8%A7%88%E4%B8%AD%E9%80%89%E6%8B%A9%E5%8F%97%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%A0%B9%E8%AF%81%E4%B9%A6%E9%A2%81%E5%8F%91%E6%9C%BA%E6%9E%84%E8%BF%99%E6%AD%A5%E6%98%AF%E7%A1%AE%E4%BF%9D%E8%AF%81%E4%B9%A6%E5%8F%97%E4%BF%A1%E4%BB%BB%E9%98%B2%E6%AD%A2%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%87%BA%E7%8E%B0%E5%AE%89%E5%85%A8%E6%8F%90%E7%A4%BA">3.下一步后，选择下面的<strong>将所有证书都放入下列储存</strong>，在浏览中选择<strong>受信任的根证书颁发机构</strong>（<strong>这步是确保证书受信任，防止在浏览器中出现安全提示</strong>）</a></li>
-<li><a href="#4%E6%9B%B4%E6%8D%A2hosts">4.更换Hosts</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#cwindowssystem32driversetc">C:\Windows\System32\drivers\etc</a><br>
-*
-<ul>
-<li><a href="#5%E5%90%AF%E5%8A%A8nginx">5.启动Nginx</a></li>
-<li><a href="#n%E6%9C%80%E5%90%8E%E6%8F%90%E9%86%92">N.最后提醒</a></li>
-<li><a href="#nginx%E5%8F%8D%E4%BB%A3%E5%AE%89%E8%A3%85%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98">Nginx反代安装中的问题</a>
-<ul>
-<li><a href="#1%E6%B5%8F%E8%A7%88%E5%99%A8%E5%87%BA%E7%8E%B0%E6%82%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E4%B8%8D%E6%98%AF%E7%A7%81%E5%AF%86%E8%BF%9E%E6%8E%A5">1.浏览器出现您的连接不是私密连接</a></li>
-<li><a href="#2%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80">2.可视化工具无法打开</a></li>
-<li><a href="#3%E6%8A%A5%E9%94%99%E8%A7%A3%E6%9E%90">3.报错解析</a></li>
-</ul>
-</li>
-<li><a href="#%E5%8F%AA%E6%94%B9hosts">只改Hosts</a></li>
-</ul>
-</li>
-<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
-<li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E">写在最后</a></li>
-</ul>
-(樱花庄的白猫Pixiv-Nginx反代详细使用教程)</p>
-<h1 id="前言">前言</h1>
+                <h1 id="前言">前言</h1>
 <p>开头便要感谢一下提供Nginx反代上Pixiv的大佬 <strong>Mashiro</strong><br>
 （我只心血来潮决定写一篇详细教程，程序不是我写的啦）<br>
 <mark>本文为樱花庄的白猫上的Nginx反代上P站的详细教程，你可以先去下文的网站，如有什么不懂或是不想动脑才需看此文章</mark><br>
-https://2heng.xin/2017/09/19/pixiv/</p>
+<a href="https://2heng.xin/2017/09/19/pixiv/">樱花庄の传送门</a></p>
 <h1 id="手把手详细教程">手把手详细教程</h1>
 <p>接下来就是详细教程（<s>其实本人对Nginx反代的原理一窍不通</s>，只是教人教的有些多，无奈之下决定写一篇教程）<br>
 <a href="https://digi.ninja/blog/domain_fronting.php">此处反正我看不懂的原理 </a></p>
-<h1 id="注意本文没有任何原理解释只有安装教程"><mark>注意：本文没有任何原理解释！！！只有安装教程</mark></h1>
+<p><mark>注意：本文没有任何原理解释！！！只有安装教程</mark></p>
 <h2 id="nginx反代安装教程">Nginx反代安装教程</h2>
 <h3 id="1进入樱花庄的白猫qwq下载我知道这步简直但还是要写的">1.进入樱花庄的白猫（qwq）下载（<s>我知道这步简直***</s>，但还是要写的）</h3>
-<p><img src="https://img-blog.csdnimg.cn/20190811220524547.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nfutr11gj30rh0msqk0.jpg" alt="在这里插入图片描述"></p>
+<p><mark>或者你也可以到群文件里去下载，都一样的说</mark></p>
 <h3 id="2打开文件夹找到名为cacer的证书右键点击安装">2.打开文件夹，找到名为ca.cer的证书，右键点击安装</h3>
-<p><img src="https://img-blog.csdnimg.cn/20190811220928101.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="记住！选择本地计算机"></p>
+<p><img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nfutfdrvj30ld0m1jt4.jpg" alt="记住！选择本地计算机"></p>
 <h3 id="3下一步后选择下面的将所有证书都放入下列储存在浏览中选择受信任的根证书颁发机构这步是确保证书受信任防止在浏览器中出现安全提示">3.下一步后，选择下面的<strong>将所有证书都放入下列储存</strong>，在浏览中选择<strong>受信任的根证书颁发机构</strong>（<strong>这步是确保证书受信任，防止在浏览器中出现安全提示</strong>）</h3>
-<p><img src="https://img-blog.csdnimg.cn/20190811221642610.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<p><img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nfuthp8gj30l80m1q48.jpg" alt="在这里插入图片描述"><br>
 最后点击下一步，以及完成<br>
-<img src="https://img-blog.csdnimg.cn/20190811221826105.PNG" alt="在这里插入图片描述"><br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nfut9p3cj305h061wed.jpg" alt="在这里插入图片描述"><br>
 出现这个就说明成功惹。。。</p>
 <h3 id="4更换hosts">4.更换Hosts</h3>
 <p>找到Pixiv-Nginx-master文件夹中的hosts（<s>这肯定没问题</s>）<br>
-<img src="https://img-blog.csdnimg.cn/20190811222457402.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nfutcxizj30nd0d1t9t.jpg" alt="在这里插入图片描述"><br>
 再根据以下路径</p>
 <h1 id="cwindowssystem32driversetc">C:\Windows\System32\drivers\etc</h1>
 <p>寻找到电脑本地的hosts<br>
-<img src="https://img-blog.csdnimg.cn/20190811222838810.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nfutazxoj30mh0d63yq.jpg" alt="在这里插入图片描述"><br>
 最后用Pixiv-Nginx-master的hosts覆盖etc文件夹的<br>
 完成hosts更改<br>
-<img src="https://img-blog.csdnimg.cn/20190811223032187.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nfutkavoj31hc0p443v.jpg" alt="在这里插入图片描述"></p>
 <h3 id="5启动nginx">5.启动Nginx</h3>
 <p>找到Pixiv-Nginx-master的可视化工具<br>
-<img src="https://img-blog.csdnimg.cn/20190811223206402.PNG" alt="在这里插入图片描述"><br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nfutdvg9j30ju010dfo.jpg" alt="在这里插入图片描述"><br>
 打开<br>
-<img src="https://img-blog.csdnimg.cn/20190811223301842.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nfuti1muj30mx0cwwgu.jpg" alt="在这里插入图片描述"><br>
 点击第一个Nginx的Start，Running下的<strong>×</strong>会变成<strong>√</strong>（如果一闪就变回<strong>×</strong>，参考下文<strong>Nginx反代安装中的问题</strong>）<br>
 至此，就可以愉快地访问Pixiv惹</p>
 <h3 id="n最后提醒">N.最后提醒</h3>
 <p>由于百度搜索到的Pixiv网址有点问题，Nginx代理可能无法访问，如下<br>
-<img src="https://img-blog.csdnimg.cn/20190811223735299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7ngvguhmwj30lm0983yw.jpg" alt="在这里插入图片描述"><br>
 就上图这个网址<br>
 所以要直接输入    https://www.pixiv.net    （点击也是可以滴）</p>
 <h2 id="nginx反代安装中的问题">Nginx反代安装中的问题</h2>
 <h3 id="1浏览器出现您的连接不是私密连接">1.浏览器出现您的连接不是私密连接</h3>
-<p><img src="https://img-blog.csdnimg.cn/20190812090426295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<p><img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nh3vjn0ij30r30ckgme.jpg" alt="在这里插入图片描述"><br>
 你可以通过点击高级来继续访问，但仍有可能出现问题<br>
 所以最好参考上文第3步的证书安装<br>
 <a href="https://github.com/mashirozx/Pixiv-Nginx/wiki/%E2%80%9C%E6%82%A8%E7%9A%84%E9%93%BE%E6%8E%A5%E4%B8%8D%E6%98%AF%E7%A7%81%E5%AF%86%E9%93%BE%E6%8E%A5%E2%80%9D%E6%8E%92%E6%9F%A5%E6%96%B9%E6%B3%95">这里是大佬Mashiro的处理方法</a></p>
 <h3 id="2可视化工具无法打开">2.可视化工具无法打开</h3>
 <p>可会出现因Framework的缺少导致以下的问题<br>
-<img src="https://img-blog.csdnimg.cn/20190812130036266.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nh4gnwfjj30d906c752.jpg" alt="在这里插入图片描述"><br>
 <a href="https://docs.microsoft.com/zh-cn/dotnet/framework/install/on-windows-7">去官网下一个就行惹</a></p>
 <h3 id="3报错解析">3.报错解析</h3>
 <p>有可能你会发现，Nginx的√一闪就回到<strong>×</strong>，这时你要打开Pixiv-Nginx-master里的logs文件夹，找到error.log，里面会有错误信息。<br>
 以下为解析（<s>我也不知道对不对的那种，参考参考</s>）<br>
 1.conflicting server name &quot;hlsa6.pixivsketch.net&quot; on....<br>
 这是由于大佬Mashiro的疏忽导致，目前只存在于老版本，下载新版即可<br>
-<img src="https://img-blog.csdnimg.cn/20190812091617378.png" alt="在这里插入图片描述"><br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nh4zyfdfj308f03jt8m.jpg" alt="在这里插入图片描述"><br>
 2.CreateFile()&quot;安装路径&quot; failed(1113:No mapping for the Unicode character exists in....)<br>
 安装路径带有中文<br>
 安装路径全英文即可消除错误<br>
 3.build() to 0.0.0.0.80 failed(10013 : An attempt was made to access a socket in a way...)<br>
 端口占用，用cmd找一下占用80端口的软件，关掉(其实不一定是80，这个要自己看）<br>
-<img src="https://img-blog.csdnimg.cn/2019081212591713.png" alt="在这里插入图片描述"></p>
-<p>如果你想两个共存<br>
-<img src="https://img-blog.csdnimg.cn/20190812125311619.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMDgyMTIx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
-在这个文件里更改端口<br>
-listen 后面那个数字哦</p>
-<h2 id="只改hosts">只改Hosts</h2>
-<p>这个嘛，就是不通过反代，直接靠IP地址上Pixiv<br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nh4zyfdfj308f03jt8m.jpg" alt="在这里插入图片描述"></p>
+<p><mark>如果你想两个共存</mark><br>
+<img src="http://ww1.sinaimg.cn/large/007WHN3mgy1g7nh63i2gfj31350j841p.jpg" alt="在这里插入图片描述"><br>
+<mark>在这个文件里更改端口（nginx.conf)</mark><br>
+<mark>在里面找到你上面对应的端口，例如80</mark><br>
+<mark>listen 后面那个数字哦</mark></p>
+<h2 id="只改hosts由于gfw的再次加高现在真的凉了">只改Hosts（由于GFW的再次加高，现在真的凉了）</h2>
+<p><s>这个嘛，就是不通过反代，直接靠IP地址上Pixiv<br>
 只需靠上文的改hosts那一段就行了<br>
 <a href="https://pan.baidu.com/s/1HQpGPwALgKVRBYj8mdleKw">这是我手头上的一个，有一堆诸如Google、Wiki、YouTube之类的，但亲测只有Pixiv有效</a><br>
 提取码: 73n3<br>
-参照上文更换hosts即可</p>
+参照上文更换hosts即可</s></p>
 <h1 id="其他">其他</h1>
 <p>其他倒是没啥<br>
 Andorid系统可通过VPN上Pixiv<br>
@@ -204,16 +174,15 @@ Andorid系统可通过VPN上Pixiv<br>
 <h1 id="写在最后">写在最后</h1>
 <p>其实这个教程，实在是太过于详细，其实你本来靠樱花庄上的文章就能实现<br>
 但是嘛，总会出些问题（<s>或者是你懒，不想想</s>）<br>
-<s>你要是看了这篇还是不会。。。我也没办法~<br>
+<s>你要是看了这篇还是不会。。。我也没办法</s>~<br>
 #最后的最后<br>
-这篇文章物品原本打算放在CSDN上，可是审核怎么也过不去，于是我就搬到了GitHub上，可是有些语法还有图床都是CSDN的访问是可能出现问题，我也没时间改（真的</s>~~~）有时间肯定会改的（也许吧，我自己都不行，将就着看吧~~~~~~~~~）</p>
+这篇文章物品原本打算放在CSDN上，可是审核怎么也过不去，于是我就搬到了GitHub上，可是有些语法还有图床都是CSDN的访问是可能出现问题，我也没时间改（<s>真的（认真脸）有时间肯定会改的（也许吧，我自己都不信，将就着看吧</s>））</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
-<li><a href="#%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B">手把手详细教程</a></li>
-<li><a href="#%E6%B3%A8%E6%84%8F%E6%9C%AC%E6%96%87%E6%B2%A1%E6%9C%89%E4%BB%BB%E4%BD%95%E5%8E%9F%E7%90%86%E8%A7%A3%E9%87%8A%E5%8F%AA%E6%9C%89%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B">==注意：本文没有任何原理解释！！！只有安装教程==</a>
+<li><a href="#%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B">手把手详细教程</a>
 <ul>
 <li><a href="#nginx%E5%8F%8D%E4%BB%A3%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B">Nginx反代安装教程</a>
 <ul>
@@ -237,7 +206,7 @@ Andorid系统可通过VPN上Pixiv<br>
 <li><a href="#3%E6%8A%A5%E9%94%99%E8%A7%A3%E6%9E%90">3.报错解析</a></li>
 </ul>
 </li>
-<li><a href="#%E5%8F%AA%E6%94%B9hosts">只改Hosts</a></li>
+<li><a href="#%E5%8F%AA%E6%94%B9hosts%E7%94%B1%E4%BA%8Egfw%E7%9A%84%E5%86%8D%E6%AC%A1%E5%8A%A0%E9%AB%98%E7%8E%B0%E5%9C%A8%E7%9C%9F%E7%9A%84%E5%87%89%E4%BA%86">只改Hosts（由于GFW的再次加高，现在真的凉了）</a></li>
 </ul>
 </li>
 <li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
